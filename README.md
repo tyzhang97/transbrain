@@ -1,6 +1,6 @@
 # Transbrain
 
-The core code of paper 'Transbrain: A translational framework for whole-brain mapping linking human and mouse'.
+The code of paper 'Transbrain: A translational framework for whole-brain mapping linking human and mouse'.
 
 ![Fig1_HSZ_check](https://github.com/user-attachments/assets/da7ebcf1-43ad-4ca3-a6c4-95cbbe654891)
 
