@@ -1,6 +1,6 @@
 # Transbrain
 
-The core code of paper 'Transbrain: A translational framework for whole-brain mapping linking human and mouse'
+The core code of paper 'Transbrain: A translational framework for whole-brain mapping linking human and mouse'.
 
 ![Fig1_HSZ_check](https://github.com/user-attachments/assets/da7ebcf1-43ad-4ca3-a6c4-95cbbe654891)
 
@@ -25,3 +25,25 @@ The analysis process and figures can be viewed in the Jupyter Notebook. The nece
   * [MixData_SubCortical_Train_Repeat1000](https://github.com/ibpshangzheng/Transbrain/tree/main/TRembeddings/FinalModels/MixData_SubCortical_Train_Repeat1000): subcortical embeddings of the fused data repeated 100 times, with each dataset subjected to 10 iterations of model training.
 
 * [Graphembeddings](https://github.com/ibpshangzheng/Transbrain/tree/main/Graphembeddings): graph embeddings of Human-Mouse generated using graph walk embedding algorithms.
+
+## Analysis
+
+* [TRembeddings_analysis](https://github.com/ibpshangzheng/Transbrain/tree/main/notebook/TRembeddings_analysis): cross-species correspondence of TR embeddings and conserved transcriptional gradients.
+
+![Fig3_HSZ_check_画板 1](https://github.com/user-attachments/assets/5df54559-25ac-4b68-9b77-05848c448f9c)
+
+* ['Graphembedding_analysis'](https://github.com/ibpshangzheng/Transbrain/tree/main/notebook/Graphembedding_analysis): evaluate whether graph embeddings incorporate structural connectivity information while preserving cross-species transcriptional similarity.
+
+* [Mouse_to_Human](https://github.com/ibpshangzheng/Transbrain/tree/main/notebook/Mouse_to_Human): The process for transforming mouse whole-brain phenotypes into human equivalents.
+
+# Python Dependencies
+
+Code mainly depends on the Python (>= 3.8.5) scientific stack.
+
+```python
+numpy V1.22.4
+pandas V1.5.3
+```
+
+
+
