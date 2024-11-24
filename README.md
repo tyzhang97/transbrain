@@ -40,7 +40,7 @@ The analysis process and figures can be viewed in the Jupyter Notebook. The nece
 
 Code mainly depends on the Python (>= 3.8.5) scientific stack.
 
-```python
+```
 numpy V1.22.4
 pandas V1.5.3
 matplotlib V3.7.3
