@@ -20,8 +20,8 @@ The analysis process and figures can be viewed in the Jupyter Notebook. The nece
 
 * [TR_embeddings](https://github.com/ibpshangzheng/Transbrain/tree/main/TRembeddings/FinalModels): the region-specific transcriptional embeddings of detached model.
 
-  *** [MixData_Cortical_Train_Repeat1000](https://github.com/ibpshangzheng/Transbrain/tree/main/TRembeddings/FinalModels/MixData_Cortical_Train_Repeat1000): cortical embeddings of the fused data repeated 100 times, with each dataset subjected to 10 iterations of model training.
+  * [MixData_Cortical_Train_Repeat1000](https://github.com/ibpshangzheng/Transbrain/tree/main/TRembeddings/FinalModels/MixData_Cortical_Train_Repeat1000): cortical embeddings of the fused data repeated 100 times, with each dataset subjected to 10 iterations of model training.
 
-  *** [MixData_SubCortical_Train_Repeat1000](https://github.com/ibpshangzheng/Transbrain/tree/main/TRembeddings/FinalModels/MixData_SubCortical_Train_Repeat1000): subcortical embeddings of the fused data repeated 100 times, with each dataset subjected to 10 iterations of model training.
+  * [MixData_SubCortical_Train_Repeat1000](https://github.com/ibpshangzheng/Transbrain/tree/main/TRembeddings/FinalModels/MixData_SubCortical_Train_Repeat1000): subcortical embeddings of the fused data repeated 100 times, with each dataset subjected to 10 iterations of model training.
 
 * [Graphembeddings](https://github.com/ibpshangzheng/Transbrain/tree/main/Graphembeddings): graph embeddings of Human-Mouse generated using graph walk embedding algorithms.
