@@ -49,6 +49,7 @@ nilearn V0.10.2
 scipy V1.10.1
 scikit-learn 1.3.2
 ```
-
+# License
+This project is covered under the MIT 2.0 License.
 
 
