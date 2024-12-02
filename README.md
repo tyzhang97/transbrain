@@ -38,7 +38,8 @@ The analysis process and figures can be viewed in the Jupyter Notebook. The nece
  
   * [Connectome-embeddings](https://github.com/ibpshangzheng/Transbrain/tree/main/generate_graph_embeddings/Connectome-embeddings): the source node embedding code was provided by [Gideon Rosenthal et al](https://www.nature.com/articles/s41467-018-04614-w).
  
-![Fig4_HSZ_check_git](https://github.com/user-attachments/assets/87bae595-13f4-4327-b3e6-0a0510dc0db4)
+![Fig4_HSZ_check_git](https://github.com/user-attachments/assets/3ec61376-71cd-4a33-91f5-d864ed410d2a)
+
 
 * [Graphembedding_analysis](https://github.com/ibpshangzheng/Transbrain/tree/main/notebook/Graphembedding_analysis): evaluate whether graph embeddings incorporate structural connectivity information while preserving cross-species transcriptional similarity.
 
