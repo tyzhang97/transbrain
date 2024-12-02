@@ -32,9 +32,19 @@ The analysis process and figures can be viewed in the Jupyter Notebook. The nece
 
 ![Fig3_HSZ_check_画板 1](https://github.com/user-attachments/assets/5df54559-25ac-4b68-9b77-05848c448f9c)
 
+* [generate_graph_embeddings](https://github.com/ibpshangzheng/Transbrain/tree/main/generate_graph_embeddings): code to generate graph embeddings.
+
+  * [Human_Mouse_embeddings](https://github.com/ibpshangzheng/Transbrain/blob/main/generate_graph_embeddings/Human_Mouse_Embedding.ipynb): notebook to generate Human-Mouse Graph.
+ 
+  * [Connectome-embeddings](https://github.com/ibpshangzheng/Transbrain/tree/main/generate_graph_embeddings/Connectome-embeddings): the source node embedding code was provided by [Gideon Rosenthal et al](https://www.nature.com/articles/s41467-018-04614-w).
+ 
+![Fig4_HSZ_check_git](https://github.com/user-attachments/assets/87bae595-13f4-4327-b3e6-0a0510dc0db4)
+
 * [Graphembedding_analysis](https://github.com/ibpshangzheng/Transbrain/tree/main/notebook/Graphembedding_analysis): evaluate whether graph embeddings incorporate structural connectivity information while preserving cross-species transcriptional similarity.
 
-* [Mouse_to_Human](https://github.com/ibpshangzheng/Transbrain/tree/main/notebook/Mouse_to_Human): The process for transforming mouse whole-brain phenotypes into human equivalents.
+* [Mouse_to_Human](https://github.com/ibpshangzheng/Transbrain/tree/main/notebook/Mouse_to_Human): the process for transforming mouse whole-brain phenotypes into human equivalents.
+
+![Fig7_HSZ_check_git](https://github.com/user-attachments/assets/b0526b91-9bca-4963-bae5-c262217ab9d8)
 
 # Python Dependencies
 
