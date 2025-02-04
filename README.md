@@ -2,7 +2,8 @@
 
 The code of paper 'TransBrain: A computational framework for translating brain-wide phenotypes between humans and mice'.
 
-![Fig1_HSZ_check](https://github.com/user-attachments/assets/da7ebcf1-43ad-4ca3-a6c4-95cbbe654891)
+![Fig1](https://github.com/user-attachments/assets/7feaddc4-13cb-472d-95e1-5c3084b3d074)
+
 
 # Overview
 
