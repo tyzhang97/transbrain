@@ -1,4 +1,4 @@
-![Fig3_TR_pattern](https://github.com/user-attachments/assets/3c7187d1-96a7-4c6a-8151-4a50ff8412ab)# Transbrain
+# Transbrain
 
 The code of paper 'TransBrain: A computational framework for translating brain-wide phenotypes between humans and mice'.
 
