@@ -1,4 +1,4 @@
-# Transbrain
+![Fig3_TR_pattern](https://github.com/user-attachments/assets/3c7187d1-96a7-4c6a-8151-4a50ff8412ab)# Transbrain
 
 The code of paper 'TransBrain: A computational framework for translating brain-wide phenotypes between humans and mice'.
 
@@ -31,7 +31,8 @@ The analysis process and figures can be viewed in the Jupyter Notebook. The nece
 
 * [TRembeddings_analysis](https://github.com/ibpshangzheng/Transbrain/tree/main/notebook/TRembeddings_analysis): cross-species correspondence of TR embeddings and conserved transcriptional gradients.
 
-![Fig3_HSZ_check_画板 1](https://github.com/user-attachments/assets/5df54559-25ac-4b68-9b77-05848c448f9c)
+![Fig3_TR_pattern](https://github.com/user-attachments/assets/a5a768db-2901-4b5a-9437-4b581577ef05)
+
 
 * [generate_graph_embeddings](https://github.com/ibpshangzheng/Transbrain/tree/main/generate_graph_embeddings): code to generate graph embeddings.
 
@@ -39,7 +40,8 @@ The analysis process and figures can be viewed in the Jupyter Notebook. The nece
  
   * [Connectome-embeddings](https://github.com/ibpshangzheng/Transbrain/tree/main/generate_graph_embeddings/Connectome-embeddings): the source node embedding code was provided by [Gideon Rosenthal et al](https://www.nature.com/articles/s41467-018-04614-w).
  
-![Fig4_HSZ_check_git](https://github.com/user-attachments/assets/3ec61376-71cd-4a33-91f5-d864ed410d2a)
+
+![graph_embedding](https://github.com/user-attachments/assets/06232867-7213-4357-9737-6f41c8cc5066)
 
 
 * [Graphembedding_analysis](https://github.com/ibpshangzheng/Transbrain/tree/main/notebook/Graphembedding_analysis): evaluate whether graph embeddings incorporate structural connectivity information while preserving cross-species transcriptional similarity.
