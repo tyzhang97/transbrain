@@ -2,7 +2,7 @@
 
 TransBrain is an integrated computational framework for bidirectional translation of brain-wide phenotypes between humans and mice. Specifically, TransBrain provides a systematic approach for cross-species quantitative comparison and mechanistic investigation of both normal and pathological brain functions.
 
-![TransBrain_FIG1](https://github.com/user-attachments/assets/b0bf9d8e-fd0e-4747-a8b1-47e7089f5d9c)
+![TransBrain_FIG1](https://github.com/user-attachments/assets/1d87b730-3928-480a-98fa-7a0492754ee5)
 
 What can TransBrain do?
 
