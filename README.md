@@ -80,7 +80,7 @@ scikit-learn V1.3.2
 See full list in environment.yml file. 
 
 ## License
-This project is covered under the APA 2.0 License.
+This project is covered under the Apache 2.0 License.
 
 ## Support
 For questions and comments, please file a Github issue and/or email Shangzheng Huang(huangshangzheng@ibp.ac.cn)
