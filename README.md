@@ -32,7 +32,7 @@ You can also directly install the conda environment from the environment.yml fil
 cd TransBrain
 conda env create -f environment.yml
 ```
-Then, install GASTON using pip.
+Then, install TransBrain using pip.
 
 ```sh
 conda activate transbrain-package
@@ -53,6 +53,8 @@ This allows seamless integration into your existing workflows. 🚀
 ## Getting Started
 
 We provided [**Tutorial Cases**](#tutorial-cases) demonstrating how to apply TransBrain for cross-species translation and comparison, which includes:
+
+* Analyzing and visualizing transcriptional similarity between humans and mice.
 
 * Characterizing the evolutionary spectrum of resting-state fMRI network phenotypes.
 
