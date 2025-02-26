@@ -1,56 +1,68 @@
-# Transbrain
+# TransBrain
 
-The code of paper 'TransBrain: A computational framework for translating brain-wide phenotypes between humans and mice'.
+TransBrain is an integrated computational framework for bidirectional translation of brain-wide phenotypes between humans and mice. Specifically, TransBrain provides a systematic approach for cross-species quantitative comparison and mechanistic investigation of both normal and pathological brain functions.
 
-![Fig1](https://github.com/user-attachments/assets/7feaddc4-13cb-472d-95e1-5c3084b3d074)
+![TransBrain_FIG1](https://github.com/user-attachments/assets/b0bf9d8e-fd0e-4747-a8b1-47e7089f5d9c)
 
+What can TransBrain do?
 
-# Overview
+1. Exploring the similarity relationships at the transcriptional level.
 
-The source introduces the initial transcriptional and graph embeddings and outlines the process for transforming mouse whole-brain phenotypes into human equivalents. Python and Jupyter are used for analysis.
+2. Inferring the conservation of whole-brain phenotypes.
 
-# Files and Analysis
+3. Transforming and annotating whole-brain functional circuits.
 
-The analysis process and figures can be viewed in the Jupyter Notebook. The necessary files for completing the analysis are included in the notebook's folder, while other files are organized in a separate folder.
+4. Linking specific mouse models with human diseases.
 
-## Files
+## Further Reading
 
-* [TR_embeddings](https://github.com/ibpshangzheng/Transbrain/tree/main/TRembeddings/FinalModels): the region-specific transcriptional embeddings of detached model.
+If you wish to learn more about the construction details of this method, please refer to our article: [https://www.biorxiv.org/content/10.1101/2025.01.27.635016v1](https://www.biorxiv.org/content/10.1101/2025.01.27.635016v1) (in preprint).
 
-  * [MixData_Cortical_Train_Repeat1000](https://github.com/ibpshangzheng/Transbrain/tree/main/TRembeddings/FinalModels/MixData_Cortical_Train_Repeat1000): cortical embeddings of the fused data repeated 100 times, with each dataset subjected to 10 iterations of model training.
+## Installation
 
-  * [MixData_SubCortical_Train_Repeat1000](https://github.com/ibpshangzheng/Transbrain/tree/main/TRembeddings/FinalModels/MixData_SubCortical_Train_Repeat1000): subcortical embeddings of the fused data repeated 100 times, with each dataset subjected to 10 iterations of model training.
+To install TransBrain as a package, run:
 
-* [Graphembeddings](https://github.com/ibpshangzheng/Transbrain/tree/main/Graphembeddings): graph embeddings of Human-Mouse generated using graph walk embedding algorithms.
+```sh
+pip install TransBrain
+```
 
-* [atlas](https://github.com/ibpshangzheng/Transbrain/tree/main/atlas): human and mouse atlas, templates, and corresponding csv files.
+You can also directly install the conda environment from the environment.yml file:
 
-* [sc_matrix](https://github.com/ibpshangzheng/Transbrain/tree/main/sc_matrix): human dti matrix and mouse tracer matrix used in our study.
+```sh
+cd TransBrain
+conda env create -f environment.yml
+```
+Then, install GASTON using pip.
 
-## Analysis
+```sh
+conda activate transbrain-package
+pip install -e .
+```
+after installation , import and use it in your script:
 
-* [TRembeddings_analysis](https://github.com/ibpshangzheng/Transbrain/tree/main/notebook/TRembeddings_analysis): cross-species correspondence of TR embeddings and conserved transcriptional gradients.
+```python
+import TransBrain as TB
 
-![Fig3_TR_pattern](https://github.com/user-attachments/assets/a5a768db-2901-4b5a-9437-4b581577ef05)
+# Perform cross-species mapping
+human_data = TB.trans_mouse_to_human(mouse_data)
+mouse_data = TB.trans_human_to_mouse(human_data)
+```
 
+This allows seamless integration into your existing workflows. 🚀
 
-* [generate_graph_embeddings](https://github.com/ibpshangzheng/Transbrain/tree/main/generate_graph_embeddings): code to generate graph embeddings.
+## Getting Started
 
-  * [Human_Mouse_embeddings](https://github.com/ibpshangzheng/Transbrain/blob/main/generate_graph_embeddings/Human_Mouse_Embedding.ipynb): notebook to generate Human-Mouse Graph.
- 
-  * [Connectome-embeddings](https://github.com/ibpshangzheng/Transbrain/tree/main/generate_graph_embeddings/Connectome-embeddings): the source node embedding code was provided by [Gideon Rosenthal et al](https://www.nature.com/articles/s41467-018-04614-w).
- 
+We provided [**Tutorial Cases**](#tutorial-cases) demonstrating how to apply TransBrain for cross-species translation and comparison, which includes:
 
-![graph_embedding](https://github.com/user-attachments/assets/06232867-7213-4357-9737-6f41c8cc5066)
+* Characterizing the evolutionary spectrum of resting-state fMRI network phenotypes.
 
+* Annotating the optogenetic circuits in mice using Neurosynth.
 
-* [Graphembedding_analysis](https://github.com/ibpshangzheng/Transbrain/tree/main/notebook/Graphembedding_analysis): evaluate whether graph embeddings incorporate structural connectivity information while preserving cross-species transcriptional similarity.
+* Linking gene mutations to imaging phenotype deviations in autism.
 
-* [Mouse_to_Human](https://github.com/ibpshangzheng/Transbrain/tree/main/notebook/Mouse_to_Human): the process for transforming mouse whole-brain phenotypes into human equivalents.
+The analysis process and figures can be viewed in the Jupyter Notebook. The necessary files and datas for completing these analysis are included in the notebook's folder.
 
-![Fig7_HSZ_check_git](https://github.com/user-attachments/assets/b0526b91-9bca-4963-bae5-c262217ab9d8)
-
-# Python Dependencies
+## Python Dependencies
 
 Code mainly depends on the Python (>= 3.8.5) scientific stack.
 
@@ -63,7 +75,12 @@ nilearn V0.10.2
 scipy V1.10.1
 scikit-learn V1.3.2
 ```
-# License
+See full list in environment.yml file. 
+
+## License
 This project is covered under the MIT 2.0 License.
+
+## Support
+For questions and comments, please file a Github issue and/or email Shangzheng Huang(huangshangzheng@ibp.ac.cn)
 
 
