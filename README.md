@@ -79,21 +79,21 @@ Transformer = TB.trans.SpeciesTrans()
 ```
 
 ```python
-# example from mouse to human
+# Example from mouse to human
 
 mouse_phenotype = pd.read_csv('./TransBrain/ExampleData/Mouse_cortex_example_data.csv',index_col=0)
 mouse_phenotype_in_human = Transformer.mouse_to_human(mouse_phenotype, region_type='cortex', normalize_input=True, restore_output=False)
 ```
 
 ```python
-# example from human to mouse
+# Example from human to mouse
 
 human_phenotype = pd.read_csv('./TransBrain/ExampleData/Human_cortex_example_data.csv',index_col=0)
 human_phenotype_in_mouse = Transformer.human_to_mouse(human_phenotype, region_type='cortex', normalize_input=True, restore_output=False)
 ```
 
 ```python
-#####get graph embeddings 
+# Get graph embeddings 
 
 Human_Mouse_embedding = Transformer._load_graph_embeddings()
 ```
