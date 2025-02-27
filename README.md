@@ -68,7 +68,7 @@ See full list in environment.yml file.
 
 ## Getting Started
 ### Usage
-After installation, you can refer to the 'Test.py' file in the root directory of TransBrain to explore usage examples and other functions.
+After installation, you can refer to the Test file in the root directory of TransBrain to explore usage examples and other functions.
 
 ```python
 import pandas as pd
