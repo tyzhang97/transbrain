@@ -2,7 +2,7 @@
 
 TransBrain is an integrated computational framework for bidirectional translation of brain-wide phenotypes between humans and mice. Specifically, TransBrain provides a systematic approach for cross-species quantitative comparison and mechanistic investigation of both normal and pathological brain functions.
 
-![TransBrain_FIG1](https://github.com/user-attachments/assets/1d87b730-3928-480a-98fa-7a0492754ee5)
+![TransBrain_FIG1](./Figure/TransBrain_Fig1.jpg)
 
 What can TransBrain do?
 
@@ -68,7 +68,7 @@ See full list in environment.yml file.
 
 ## Getting Started
 ### Usage
-After installation, you can refer to the Test file in the root directory of TransBrain to explore usage examples and other functions.
+After installation, you can refer to the ![Test file](./Test.py) in the root directory of TransBrain to explore usage examples and other functions.
 
 ```python
 import pandas as pd
