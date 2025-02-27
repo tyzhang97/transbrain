@@ -18,6 +18,7 @@ What can TransBrain do?
 
 If you wish to learn more about the construction details of this method, please refer to our article: [https://www.biorxiv.org/content/10.1101/2025.01.27.635016v1](https://www.biorxiv.org/content/10.1101/2025.01.27.635016v1) (in preprint).
 
+
 ## Installation
 TransBrain is on pypi: https://pypi.org/project/TransBrain/
 
@@ -73,19 +74,19 @@ After installation, you can refer to the 'Test.py' file in the root directory of
 import pandas as pd
 import TransBrain as TB
 
-#Initialize TransBrain
+# Initialize TransBrain
 Transformer = TB.trans.SpeciesTrans()
 ```
 
 ```python
-#####example from mouse to human
+# example from mouse to human
 
 mouse_phenotype = pd.read_csv('./TransBrain/ExampleData/Mouse_cortex_example_data.csv',index_col=0)
 mouse_phenotype_in_human = Transformer.mouse_to_human(mouse_phenotype, region_type='cortex', normalize_input=True, restore_output=False)
 ```
 
 ```python
-#####example from human to mouse
+# example from human to mouse
 
 human_phenotype = pd.read_csv('./TransBrain/ExampleData/Human_cortex_example_data.csv',index_col=0)
 human_phenotype_in_mouse = Transformer.human_to_mouse(human_phenotype, region_type='cortex', normalize_input=True, restore_output=False)
