@@ -31,7 +31,7 @@ You can also create a conda environment from the environment.yml file:
 
 * First, clone this repository,
 ```sh
-git clone 
+git clone https://github.com/ibpshangzheng/Transbrain.git
 ```
 
 * Then, create the environment,
@@ -42,23 +42,65 @@ conda env create -f environment.yml
 
 * Activate the environment,
 ```sh
-conda activate TransBrain_env
+conda activate transbrain_env
 ```
 
-after installation , import and use it in your script:
+## Python Dependencies
+
+The project mainly depends on Python (>= 3.8.5).
+
+```
+matplotlib==3.7.5,
+matplotlib-inline==0.1.7,
+nibabel==5.2.1,
+nilearn==0.10.4,
+numpy==1.24.4,
+openpyxl==3.1.5,
+pandas==2.0.3,
+scikit-learn==1.3.2,
+scipy==1.10.1,
+seaborn==0.13.2,
+six==1.17.0
+```
+See full list in environment.yml file. 
+
+
+## Getting Started
+### Usage
+After installation, you can refer to the 'Test.py' file in the root directory of TransBrain to explore usage examples and other functions.
 
 ```python
+import pandas as pd
 import TransBrain as TB
 
-# Perform cross-species mapping
-human_data = TB.trans_mouse_to_human(mouse_data)
-mouse_data = TB.trans_human_to_mouse(human_data)
+#Initialize TransBrain
+Transformer = TB.trans.SpeciesTrans()
+```
+
+```python
+#####example from mouse to human
+
+mouse_phenotype = pd.read_csv('./TransBrain/ExampleData/Mouse_cortex_example_data.csv',index_col=0)
+mouse_phenotype_in_human = Transformer.mouse_to_human(mouse_phenotype, region_type='cortex', normalize_input=True, restore_output=False)
+```
+
+```python
+#####example from human to mouse
+
+human_phenotype = pd.read_csv('./TransBrain/ExampleData/Human_cortex_example_data.csv',index_col=0)
+human_phenotype_in_mouse = Transformer.human_to_mouse(human_phenotype, region_type='cortex', normalize_input=True, restore_output=False)
+```
+
+```python
+#####get graph embeddings 
+
+Human_Mouse_embedding = Transformer._load_graph_embeddings()
 ```
 
 This allows seamless integration into your existing workflows. 🚀
 
-## Getting Started
 
+### Toturials
 We provided [**Tutorial Cases**](#tutorial-cases) demonstrating how to apply TransBrain for cross-species translation and comparison, which includes:
 
 * Analyzing and visualizing transcriptional similarity between humans and mice.
@@ -71,20 +113,7 @@ We provided [**Tutorial Cases**](#tutorial-cases) demonstrating how to apply Tra
 
 The analysis process and figures can be viewed in the Jupyter Notebook. The necessary files and datas for completing these analysis are included in the notebook's folder.
 
-## Python Dependencies
 
-Code mainly depends on the Python (>= 3.8.5) scientific stack.
-
-```
-numpy V1.22.4
-pandas V1.5.3
-matplotlib V3.7.3
-Seaborn V0.13.2
-nilearn V0.10.2
-scipy V1.10.1
-scikit-learn V1.3.2
-```
-See full list in environment.yml file. 
 
 ## License
 This project is covered under the Apache 2.0 License.
