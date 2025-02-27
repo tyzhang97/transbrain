@@ -19,6 +19,7 @@ What can TransBrain do?
 If you wish to learn more about the construction details of this method, please refer to our article: [https://www.biorxiv.org/content/10.1101/2025.01.27.635016v1](https://www.biorxiv.org/content/10.1101/2025.01.27.635016v1) (in preprint).
 
 ## Installation
+TransBrain is on pypi: https://pypi.org/project/TransBrain/
 
 To install TransBrain as a package, run:
 
@@ -26,18 +27,24 @@ To install TransBrain as a package, run:
 pip install TransBrain
 ```
 
-You can also directly install the conda environment from the environment.yml file:
+You can also create a conda environment from the environment.yml file:
 
+* First, clone this repository,
+```sh
+git clone 
+```
+
+* Then, create the environment,
 ```sh
 cd TransBrain
 conda env create -f environment.yml
 ```
-Then, install TransBrain using pip.
 
+* Activate the environment,
 ```sh
-conda activate transbrain-package
-pip install -e .
+conda activate TransBrain_env
 ```
+
 after installation , import and use it in your script:
 
 ```python
