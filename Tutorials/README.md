@@ -16,7 +16,7 @@
 
 ## Analysis
 
-* [TRembeddings analysis](./Notebooks/TRembeddings_analysis): cross-species correspondence of TR embeddings and conserved transcriptional gradients.
+* [TRembeddings_analysis](./Notebooks/TRembeddings_analysis): cross-species correspondence of TR embeddings and conserved transcriptional gradients.
 
 * [Graphembeddings_analysis](./Notebooks/Graphembeddings_analysis): evaluate whether graph embeddings incorporate structural connectivity information while preserving cross-species transcriptional similarity.
 
