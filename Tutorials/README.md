@@ -8,15 +8,13 @@
 
   * [MixData_SubCortical_Train_Repeat1000](./TRembeddings/FinalModels/MixData_SubCortical_Train_Repeat1000): subcortical embeddings of the integrated data repeated 100 times, with each dataset subjected to 10 iterations of model training.
  
-* [Generate_graph_embeddings](./Generate_graph_embeddings): graph embeddings of Human-Mouse generated from graph walk embedding algorithms.
- 
 * [Atlas](./Atlas): human and mouse atlas, templates, and corresponding csv files.
 
 * [Structural_connection](./Structural_connection): human dti matrix and mouse tracer matrix used in our study.
 
 ## Analysis
 
-* [TRembeddings_analysis](./Notebooks/TRembeddings_analysis): cross-species correspondence of TR embeddings and conserved transcriptional gradients.
+* [TRembeddings analysis](./Notebooks/TRembeddings_analysis): cross-species correspondence of TR embeddings and conserved transcriptional gradients.
 
 * [Graphembeddings_analysis](./Notebooks/Graphembeddings_analysis): evaluate whether graph embeddings incorporate structural connectivity information while preserving cross-species transcriptional similarity.
 
