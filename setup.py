@@ -1,13 +1,13 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="TransBrain",  
-    version="0.1.6",        
+    name="transbrain",  
+    version="0.1.10",        
     author="Shangzheng Huang, Tongyu Zhang",
     author_email="huangshangzheng@ibp.ac.cn",
     description="TransBrain is an integrated computational framework for bidirectional translation of brain-wide phenotypes between humans and mice.", 
     long_description_content_type="text/markdown",
-    url="https://github.com/ibpshangzheng/Transbrain",  
+    url="https://github.com/ibpshangzheng/transbrain",  
     packages=find_packages(), 
     include_package_data=True,
     install_requires=[

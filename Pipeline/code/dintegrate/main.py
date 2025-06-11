@@ -18,34 +18,43 @@ from tqdm import tqdm
 from scipy import stats
 
 from collections import Counter
-from data_loader import load_data
+from pipeline.code.dintegrate.data_loader import load_data
 from multiprocessing import Pool
 
-align_csv, ahba_mean_ex, sample_ex, h19_data, thre_df,gene_filter,config = load_data()
 
 class DataIntegrator(object):
 
     """Single-nucleus dataset and AHBA dataset integration processor.
     
-    A class for weighted integration of Allen Brain Atlas sample expression data
+    For weighted integration of Allen Brain Atlas sample expression data
     with single-nucleus RNA-seq data to construct integrated expression matrices.
     Supports parallel processing and optimized downsampling.
 
-    Example:
-        >>> processor = DataIntegrator(config=config)
-        >>> processor.run()
     """
 
     def __init__(self, config: None) -> None:
 
         """
-         Initialize the data integration processor
+        Initialize the data integration processor.
+
+        Parameters
+        ----------
+        config : object
+            Configuration object containing parameters for integration.
         """
 
         self.cfg = config 
 
     def run(self)-> None:
+        """
+        Execute the integration pipeline.
 
+        Steps:
+            - Construct the cell pool if cfg.pool is True.
+            - Clean the pool to remove repeatedly assigned cells.
+            - Perform weighted integration over multiple iterations.
+            - Generate final integrated anndata files.
+        """
         if self.cfg.pool:
             args = [row for _, row in align_csv.iterrows()]
             with Pool(self.cfg.jobs) as p:
@@ -67,10 +76,14 @@ class DataIntegrator(object):
                 self.generate_integrated_anndata(k_=k)
        
     def pool_construction(self,row) -> None:
-
         """
-        Retain smooth cells with expression similarity in the top 10% of AHBA regional mean expression values for the sampling pool.
+        Retain smooth cells with expression similarity in the top 10% of AHBA regional mean expression values
+        for the sampling pool.
 
+        Parameters
+        ----------
+        row : pandas.Series
+            A row from the alignment CSV representing a brain region mapping.
         """
         pool_csv = pd.DataFrame()
         corr_list = []
@@ -103,11 +116,13 @@ class DataIntegrator(object):
         pool_csv.to_csv(save_path)
 
     def clean_pool(self) -> None:
-
         """
         Screening of repeatedly assigned cells.
 
+        Cells that are assigned to more than a configured threshold number of regions
+        are removed from the integration pool.
         """
+
         csv_paths = [
             os.path.join(self.cfg.data_files['pool_s_path'], f"{region}.csv") 
             for region in align_csv['brain_region']
@@ -132,10 +147,13 @@ class DataIntegrator(object):
         self.align_dataframe = final_df.copy()
 
     def weighted_average(self,brain_region):
-
         """
-        Weighted integration of cell expressions from the pool with samples at specified ratios.
+        Perform weighted integration of cell expressions from the pool with samples.
 
+        Parameters
+        ----------
+        brain_region : str
+            The brain region for which integration is performed.
         """
 
         region_sample = sample_ex.loc[[brain_region]]
@@ -169,10 +187,18 @@ class DataIntegrator(object):
         result_df.to_csv(save_path)
 
     def downsample_data(self,region_pool): 
-
         """
-        Downsampling from the constructed pool.
+        Downsample cells from the constructed pool.
 
+        Parameters
+        ----------
+        region_pool : pandas.DataFrame
+            DataFrame of pooled cells for a brain region.
+
+        Returns
+        -------
+        pandas.DataFrame
+            Downsampled pool DataFrame.
         """
 
         if region_pool.values.shape[0] >= self.cfg.downsample_n:
@@ -188,12 +214,17 @@ class DataIntegrator(object):
         return 2 * (x - x_min) / (x_max - x_min) - 1
     
     def generate_integrated_anndata(self, k_=0):
-
         """
-        Generate integrated anndata.
+        Generate integrated AnnData object and save as h5ad file.
 
+        Reads the integrated data of all brain regions, optionally performs z-score normalization,
+        shuffles samples, and stores the result as an h5ad file.
+
+        Parameters
+        ----------
+        k_ : int, optional
+            Iteration index for output file naming (default is 0).
         """
-
         integrated_files = [
             f"./{self.cfg.data_files['integrated_s_path']}/{region}.csv"
             for region in align_csv['brain_region']
@@ -225,6 +256,9 @@ class DataIntegrator(object):
         integrated_adata.write(os.path.join(self.cfg.data_files['integrated_s_path'], f'Integrated_dataset_{k_}.h5ad'))
 
 if __name__=='__main__':
+
+    global align_csv, ahba_mean_ex, sample_ex, h19_data, thre_df, gene_filter, config
+    align_csv, ahba_mean_ex, sample_ex, h19_data, thre_df, gene_filter, config = load_data()
 
     # Initialize processor
     integrator = DataIntegrator(config=config)
