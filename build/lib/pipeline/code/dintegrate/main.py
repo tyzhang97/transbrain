@@ -30,9 +30,6 @@ class DataIntegrator(object):
     with single-nucleus RNA-seq data to construct integrated expression matrices.
     Supports parallel processing and optimized downsampling.
 
-    Example:
-        >>> processor = DataIntegrator(config=config)
-        >>> processor.run()
     """
 
     def __init__(self, config: None) -> None:

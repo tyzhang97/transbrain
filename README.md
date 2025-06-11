@@ -138,7 +138,7 @@ This allows seamless integration into your existing workflows. 🚀
 
 
 ### Toturials
-We provided [**Tutorial Cases**](#tutorial-cases) demonstrating how to apply TransBrain for cross-species translation and comparison, which includes:
+We provided [**Tutorial Cases**](tutorials/README.md) demonstrating how to apply TransBrain for cross-species translation and comparison, which includes:
 
 * Analyzing and visualizing transcriptional similarity between humans and mice.
 

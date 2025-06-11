@@ -61,7 +61,7 @@ transbrain/atlas/bn_atlas.csv
 transbrain/atlas/bn_atlas_2mm_symmetry.nii.gz
 transbrain/atlas/dk_atlas.csv
 transbrain/atlas/dk_atlas_2mm_symmetry.nii.gz
-transbrain/atlas/min152nlin6_res-2x2x2_t1w.nii.gz
+transbrain/atlas/mni152nlin6_res-2x2x2_t1w.nii.gz
 transbrain/atlas/mouse_atlas.csv
 transbrain/atlas/mouse_atlas.nii.gz
 transbrain/atlas/mouse_atlas_0.2mm.nii.gz

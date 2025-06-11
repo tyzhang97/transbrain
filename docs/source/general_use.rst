@@ -3,7 +3,8 @@
 General Usage
 ===============
 
-- Here is a brief demonstration on how to use TransBrain. Before getting started, please `install <./Installation.rst>`_ TransBrain and run ``test_transbrain.py`` to ensure successful installation.
+- Here is a brief demonstration on how to use TransBrain. Before getting started, please `install <./installation.rst>`_ TransBrain and run ``test_transbrain.py`` to ensure successful installation.
+- Refer to this `basic usage notebook <./tests/basic_usage.ipynb>`_ for a quick introduction to TransBrain's mapping workflow.
 - Please see detailed documentation in :ref:`API` and :ref:`tutorial-section`.
 
 ~~~~ 

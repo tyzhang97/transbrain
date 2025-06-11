@@ -7,7 +7,7 @@ DNN
    :show-inheritance:
    :exclude-members: create_aligned_dataframe,generate_average_data,calculate_homology_rank, extract_embeddings
 
-
+~~~~
 
 .. autoclass:: pipeline.code.dnn.pipeline.DnnPipeline
    :members: 
