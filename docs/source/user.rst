@@ -16,7 +16,7 @@ To accommodate different needs, we provide **three levels** of usage options and
 `Online Mapping <https://transbrain.streamlit.app/>`_
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - We also provide a very user-friendly, code-free way for users.
-- The same data preparation with **General Use**.
+- The data preparation process is the same as described in **General Use**.
 - This website (https://transbrain.streamlit.app/) enables users to directly upload your data for online mapping and visualization.
 
 
