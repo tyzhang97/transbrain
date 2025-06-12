@@ -39,4 +39,3 @@ Construction Pipeline
    pipeline/run_pipeline/dnn.ipynb
    pipeline/run_pipeline/graph_embedding.ipynb
    ./methods/mapping
-   ./methods/embeddings_analysis.ipynb
