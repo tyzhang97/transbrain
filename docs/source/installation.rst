@@ -66,11 +66,9 @@ Unit Test
     ├── test_transbrain.py (Unit Test file)
     └── tests (Files used to verify installation)
 
-
-- If you see the message ``🎉 TransBrain installed successfully!!!``, it means that TransBrain is ready to use.
-
 .. code-block:: bash
 
       python test_transbrain.py
 
 
+- If you see the message ``🎉 TransBrain installed successfully!!!``, it means that TransBrain is ready to use.
