@@ -11,7 +11,7 @@ General Usage
 
 Supported Atlases
 ----------------------
-- We provide several example data in the ``example_data`` directory of the our `GitHub repository <https://github.com/ibpshangzheng/transbrain>`_.
+- We provide several example data in the ``exampledata`` directory of the our `GitHub repository <https://github.com/ibpshangzheng/transbrain/tree/main/transbrain/exampledata>`_.
 - You can download and check these files to learn the required input format. **Note** that when replacing with your own data, please **strictly follow** the format and region order in the provided template file. Mapping will **fail** if the structure is incorrect.
 - For detailed atlases information, please refer to our `paper <https://www.biorxiv.org/content/10.1101/2025.01.27.635016v1>`_ and `transbrain/atlas <https://github.com/ibpshangzheng/transbrain/tree/main/transbrain/atlas>`_
 - Support for additional atlases will be expanded in future updates.
