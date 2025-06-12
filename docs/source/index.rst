@@ -66,7 +66,7 @@ General Use
 
 Online Mapping
 ^^^^^^^^^^^^^^^^
-- We also provide a code-free website  (http://192.168.193.179:10087/), enabling users to directly upload your data for online mapping and visualization.
+- We also provide a code-free website  (https://transbrain.streamlit.app/), enabling users to directly upload your data for online mapping and visualization.
 
 Advanced Use
 ^^^^^^^^^^^^^^^^
