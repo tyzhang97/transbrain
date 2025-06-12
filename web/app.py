@@ -422,7 +422,7 @@ def map_phenotype_to_nifti_raw(mouse_phenotype_df, mouse_atlas_dict):
     return phenotype_img
 
 
-def map_phenotype_to_nifti_vec(mouse_phenotype_df, mouse_atlas_dict):
+def map_phenotype_to_nifti(mouse_phenotype_df, mouse_atlas_dict):
     """
     Fast version: fully vectorized.
     """
@@ -461,66 +461,6 @@ def map_phenotype_to_nifti_vec(mouse_phenotype_df, mouse_atlas_dict):
     
     return phenotype_img
 
-def downsample_img_by_factor(img, factor=2, inter = 'linear'):
-    """Downsamples a NIfTI image by the given factor."""
-    affine = img.affine.copy()
-    affine[:3, :3] *= factor 
-    new_shape = np.ceil(np.array(img.shape) / factor).astype(int)
-    
-    return resample_img(img, target_affine=affine, target_shape=new_shape, interpolation=inter)
-
-def upsample_img_by_factor(img, factor=2, inter='linear'):
-    """Upsamples a NIfTI image by the given factor."""
-    affine = img.affine.copy()
-    affine[:3, :3] /= factor 
-    new_shape = np.ceil(np.array(img.shape) * factor).astype(int) 
-
-    return resample_img(img, target_affine=affine, target_shape=new_shape, interpolation=inter)
-
-
-def map_phenotype_to_nifti(phenotype_df, atlas_dict,downsample = False):
-    """
-    Downsample version to save costs.
-    """
-    if downsample==False:
-        info_table = atlas_dict['info_table']
-        label_img = atlas_dict['atlas']
-        label_data = label_img.get_fdata().astype(int)
-    else:
-        info_table = atlas_dict['info_table']
-        label_img = downsample_img_by_factor(atlas_dict['atlas'], factor=3,inter='nearest')
-        label_data = label_img.get_fdata().astype(int)
-
-    new_header = label_img.header.copy()
-    new_header.set_data_dtype(np.float32)
-
-    label_map = dict(zip(info_table['Anatomical Name'], info_table['Atlas Index']))
-
-    phenotype_arr = np.zeros_like(label_data, dtype=np.float32)
-
-    # Flatten the label data to 1D for fast indexing
-    label_flat = label_data.ravel()
-    phenotype_flat = phenotype_arr.ravel()
-
-    # Build a reverse mapping: Atlas Index → Phenotype Value
-    roi_value_map = {label_map[row['Anatomical Name']]: row['Phenotype']
-                     for _, row in phenotype_df.iterrows()
-                     if row['Anatomical Name'] in label_map}
-
-    # Convert dict to array assignment
-    unique_roi_indices = np.array(list(roi_value_map.keys()))
-    unique_values = np.array(list(roi_value_map.values()))
-
-    for roi_idx, value in zip(unique_roi_indices, unique_values):
-        mask = (label_flat == roi_idx)
-        phenotype_flat[mask] = value
-
-    # Reshape back to original 3D
-    phenotype_arr = phenotype_flat.reshape(label_data.shape)
-    phenotype_img = nib.Nifti1Image(phenotype_arr, affine=label_img.affine, header=new_header)
-
-    
-    return phenotype_img
 
 def get_nii_download_button(img, filename):
     buf = BytesIO()
@@ -552,6 +492,14 @@ def pad_nifti_image(img, pad_width=20):
     padded_img = nib.Nifti1Image(padded_data, new_affine, header=header)
     return padded_img
 
+def downsample_img_by_factor(img, factor=2):
+    """Downsamples a NIfTI image by the given factor."""
+    affine = img.affine.copy()
+    affine[:3, :3] *= factor 
+    new_shape = np.ceil(np.array(img.shape) / factor).astype(int)
+    
+    return resample_img(img, target_affine=affine, target_shape=new_shape, interpolation='linear')
+
 
 if mapping_done_flag:
     st.markdown("""
@@ -569,19 +517,22 @@ if mapping_done_flag:
         with st.spinner('Rendering...'):
             data_df.reset_index(inplace=True)
             data_df.columns = [['Anatomical Name','Phenotype']]
-            source_img = map_phenotype_to_nifti(data_df, mouse_atlas, downsample=True)
+            source_img = map_phenotype_to_nifti(data_df, mouse_atlas)
             
-            padded_source_img = pad_nifti_image(source_img, pad_width=10)
-            mouse_template = downsample_img_by_factor(mouse_template, factor=3, inter='nearest')
-            padded_bg_img = pad_nifti_image(mouse_template, pad_width=10)
+            #buf = BytesIO()
+            #display = plotting.plot_stat_map(
+            #    source_img, bg_img=mouse_template, display_mode='y',
+            #    cut_coords=range(-4, 3, 1), cmap='coolwarm',
+            #    draw_cross=False, annotate=True)
+            #plt.savefig(buf, format='png', bbox_inches='tight')
+            #plt.close()
+            #buf.seek(0)
+
+            padded_source_img = pad_nifti_image(source_img, pad_width=30)
+            padded_bg_img = pad_nifti_image(mouse_template, pad_width=30)
             #downsample image to accelerate rendering
-            #padded_source_img = downsample_img_by_factor(padded_source_img, factor=3)
-            #padded_bg_img = downsample_img_by_factor(padded_bg_img, factor=3)
-            padded_source_img = upsample_img_by_factor(padded_source_img, factor=3, inter='nearest')
-            padded_bg_img = upsample_img_by_factor(padded_bg_img, factor=3, inter='nearest')
-
-            source_img = upsample_img_by_factor(source_img, factor=3, inter='nearest')
-
+            padded_source_img = downsample_img_by_factor(padded_source_img, factor=3)
+            padded_bg_img = downsample_img_by_factor(padded_bg_img, factor=3)
             html_view = plotting.view_img(
                 padded_source_img, bg_img=padded_bg_img,
                 cmap='coolwarm', draw_cross=False, annotate=True, symmetric_cmap=True)
@@ -595,6 +546,11 @@ if mapping_done_flag:
             result_df.columns = [['Anatomical Name','Phenotype']]
             target_img = map_phenotype_to_nifti(result_df, human_atlas)
             
+            #buf2 = BytesIO()
+            #display2 = plotting.plot_stat_map(target_img,cmap='coolwarm',cut_coords=(-20,-10,10))
+            #plt.savefig(buf2, format='png', bbox_inches='tight')
+            #plt.close()
+            #buf2.seek(0)"""
             html_view = plotting.view_img(
                 target_img,cmap='coolwarm',draw_cross=False, annotate=True,symmetric_cmap=True)
         st.components.v1.html(html_view._repr_html_(),height=260,width=800)
@@ -608,7 +564,11 @@ if mapping_done_flag:
             data_df.reset_index(inplace=True)
             data_df.columns = [['Anatomical Name','Phenotype']]
             source_img = map_phenotype_to_nifti(data_df, human_atlas)
-
+            #buf2 = BytesIO()
+            #display2 = plotting.plot_stat_map(source_img,cmap='coolwarm',cut_coords=(-20,-10,10))
+            #plt.savefig(buf2, format='png', bbox_inches='tight')
+            #plt.close()
+            #buf2.seek(0)
             html_view = plotting.view_img(
                 source_img,cmap='coolwarm',draw_cross=False, annotate=True,symmetric_cmap=True)
         st.components.v1.html(html_view._repr_html_(),height=260,width=800)
@@ -616,20 +576,27 @@ if mapping_done_flag:
         #get_nii_download_button(source_img, "Source_Data.nii.gz")
 
         st.markdown("### Visualization of Output Data")
+
+        
         with st.spinner('Rendering...'):
             result_df.reset_index(inplace=True)
             result_df.columns = [['Anatomical Name','Phenotype']]
-            target_img = map_phenotype_to_nifti(result_df, mouse_atlas, downsample=True)
-
-            padded_target_img = pad_nifti_image(target_img, pad_width=10)
-            mouse_template = downsample_img_by_factor(mouse_template, factor=3, inter='nearest')
-            padded_bg_img = pad_nifti_image(mouse_template, pad_width=10)
-            #padded_source_img = downsample_img_by_factor(padded_target_img, factor=3)
-            #padded_bg_img = downsample_img_by_factor(padded_bg_img, factor=3)
-            padded_source_img = upsample_img_by_factor(padded_target_img, factor=3, inter='nearest')
-            padded_bg_img = upsample_img_by_factor(padded_bg_img, factor=3, inter='nearest')
-
-            target_img = upsample_img_by_factor(target_img, factor=3, inter='nearest')
+            target_img = map_phenotype_to_nifti(result_df, mouse_atlas)
+            print('!!!!! maped to nii done')
+            #buf = BytesIO()
+            #display = plotting.plot_stat_map(
+            #    target_img, bg_img=mouse_template, display_mode='y',
+            #    cut_coords=range(-4, 3, 1), cmap='coolwarm',
+            #    draw_cross=False, annotate=True)
+            #plt.savefig(buf, format='png', bbox_inches='tight')
+            #plt.close()
+            #buf.seek(0)
+            padded_target_img = pad_nifti_image(target_img, pad_width=30)
+            padded_bg_img = pad_nifti_image(mouse_template, pad_width=30)
+            print('!!!!!padding done')
+            padded_source_img = downsample_img_by_factor(padded_target_img, factor=3)
+            padded_bg_img = downsample_img_by_factor(padded_bg_img, factor=3)
+            print('!!!!!downsample done')
 
             html_view = plotting.view_img(
                 padded_target_img, bg_img=padded_bg_img,
@@ -637,6 +604,7 @@ if mapping_done_flag:
         st.components.v1.html(html_view._repr_html_(),height=260,width=800)
         #st.image(buf, caption="Phenotype in Mouse Space",  use_container_width = True)
         #get_nii_download_button(target_img, "Target_Data.nii.gz")
+        
         plot_flag = True
 
 
