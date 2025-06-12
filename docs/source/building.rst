@@ -9,7 +9,7 @@ Construction Pipeline
 
 - At the top of each page you can find a brief introduction of the data and methods, for detailed description please refer to our `paper <https://www.biorxiv.org/content/10.1101/2025.01.27.635016v2.abstract>`_.
 
-- Due to the large data size, the dataset is not included in the GitHub repository. If needed, you can download it from the following link: xxx and place it in  ``pipeline/datasets`` directory.
+- Due to the large data size, the dataset is not included in the GitHub repository. If needed, you can download it from the following link in ``pipeline/datasets/README.md`` and place it in the same directory.
 
 
 1. **Spatial Transcriptomic Matching**
@@ -39,3 +39,4 @@ Construction Pipeline
    pipeline/run_pipeline/dnn.ipynb
    pipeline/run_pipeline/graph_embedding.ipynb
    ./methods/mapping
+   ./methods/embeddings_analysis.ipynb
