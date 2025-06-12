@@ -21,10 +21,11 @@ def get_region_phenotypes(phenotype_nii_path: str,atlas_dict: dict,method: str =
         or Allen CCFv3 space for mouse atlas.
     atlas_dict : dict
         A dictionary containing the following keys:
-        - 'atlas': The loaded Mouse atlas image.
-        - 'atlas_data': The atlas data as a numpy array.
-        - 'region_info': A list of anatomical names for the specified regions.
-        - 'info_table': The full ROI information table.
+
+            - 'atlas': The loaded Mouse atlas image.
+            - 'atlas_data': The atlas data as a numpy array.
+            - 'region_info': A list of anatomical names for the specified regions.
+            - 'info_table': The full ROI information table.
 
     method : {'mean', 'sum'}, optional
         Method for aggregating voxel values within each region. Default is 'mean'.
