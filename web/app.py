@@ -577,7 +577,7 @@ if mapping_done_flag:
 
         st.markdown("### Visualization of Output Data")
 
-        '''
+        
         with st.spinner('Rendering...'):
             result_df.reset_index(inplace=True)
             result_df.columns = [['Anatomical Name','Phenotype']]
@@ -601,7 +601,7 @@ if mapping_done_flag:
         st.components.v1.html(html_view._repr_html_(),height=260,width=800)
         #st.image(buf, caption="Phenotype in Mouse Space",  use_container_width = True)
         #get_nii_download_button(target_img, "Target_Data.nii.gz")
-        '''
+        
         plot_flag = True
 
 
@@ -612,9 +612,9 @@ if plot_flag==True:
             nib.save(source_img, tmp1.name)
             zip_file.write(tmp1.name, arcname="Source_Data.nii.gz")
 
-        #with tempfile.NamedTemporaryFile(suffix=".nii.gz", delete=False) as tmp2:
-        #    nib.save(target_img, tmp2.name)
-        #    zip_file.write(tmp2.name, arcname="Target_Data.nii.gz")
+        with tempfile.NamedTemporaryFile(suffix=".nii.gz", delete=False) as tmp2:
+            nib.save(target_img, tmp2.name)
+            zip_file.write(tmp2.name, arcname="Target_Data.nii.gz")
 
         zip_file.writestr(output_filename, csv_bytes)
 
