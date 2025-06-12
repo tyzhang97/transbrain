@@ -11,8 +11,8 @@ def get_region_phenotypes(phenotype_nii_path: str,atlas_dict: dict,method: str =
     Calculate region-wise phenotype values using a specified brain atlas.
 
     This function extracts regional statistics (mean or sum) from a phenotype NIfTI image 
-    based on a chosen human or mouse brain atlas. The phenotype image can be automatically 
-    resampled to match the atlas resolution if needed.
+    based on a chosen human or mouse brain atlas. The atlas can be automatically 
+    resampled to match the phenotype image resolution if needed.
 
     Parameters
     ----------
