@@ -273,8 +273,8 @@
 <span class="sig-prename descclassname"><span class="pre">transbrain.base.</span></span><span class="sig-name descname"><span class="pre">get_region_phenotypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phenotype_nii_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atlas_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Atlas</span> <span class="pre">Index'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Anatomical</span> <span class="pre">Name'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transbrain/base.html#get_region_phenotypes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#transbrain.base.get_region_phenotypes" title="Permalink to this definition"></a></dt>
 <dd><p>Calculate region-wise phenotype values using a specified brain atlas.</p>
 <p>This function extracts regional statistics (mean or sum) from a phenotype NIfTI image
-based on a chosen human or mouse brain atlas. The phenotype image can be automatically
-resampled to match the atlas resolution if needed.</p>
+based on a chosen human or mouse brain atlas. The atlas can be automatically
+resampled to match the phenotype image resolution if needed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
