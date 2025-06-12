@@ -14,9 +14,9 @@ import os
 
 
 sys.path.insert(0, os.path.abspath('../../'))
-sys.path.insert(0, os.path.abspath('../../pipeline'))
-sys.path.insert(0, os.path.abspath('../../tutorials'))
-sys.path.insert(0, os.path.abspath('../../tests'))
+#sys.path.insert(0, os.path.abspath('../../pipeline'))
+#sys.path.insert(0, os.path.abspath('../../tutorials'))
+#sys.path.insert(0, os.path.abspath('../../tests'))
 #sys.path.insert(0, os.path.abspath('../../pipeline/code/dintegrate'))
 #sys.path.insert(0, os.path.abspath('../../pipeline/code/graph_walk'))
 #sys.path.insert(0, os.path.abspath('../../pipeline/code/dnn'))
