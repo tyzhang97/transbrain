@@ -13,11 +13,11 @@ To accommodate different needs, we provide **three levels** of usage options and
 - You can use the embedded functions of TransBrain to map your data according to the detailed guidance in :ref:`API` and :ref:`tutorial-section`.
 
 
-`Online Mapping <http://192.168.193.179:10087/>`_
+`Online Mapping <https://transbrain.streamlit.app/>`_
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - We also provide a very user-friendly, code-free way for users.
 - The same data preparation with **General Use**.
-- This website (http://192.168.193.179:10087/) enables users to directly upload your data for online mapping and visualization.
+- This website (https://transbrain.streamlit.app/) enables users to directly upload your data for online mapping and visualization.
 
 
 `Advanced Use <building.rst>`_
