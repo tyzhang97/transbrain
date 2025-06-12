@@ -378,7 +378,7 @@ st.markdown("""
         
 - 🌐 [GitHub Repository](https://github.com/ibpshangzheng/transbrain)
 - 📦 [Install from PyPI](https://pypi.org/project/transbrain/)  
-- 📄 [Documentation](http://192.168.193.179:10088/index.html#)
+- 📄 [Documentation](https://transbrain.readthedocs.io/en/latest/)
 - 📜 [Our Paper](https://www.biorxiv.org/content/10.1101/2025.01.27.635016v1)
 - 📧 For questions, contact the author: Shangzheng Huang (huangshangzheng@ibp.ac.cn)
 """)
@@ -513,31 +513,32 @@ if mapping_done_flag:
 
     if direction == 'mouse to human':
         st.markdown("### Visualization of Input Data")
-        st.markdown("You can drag the image to display the slice you want.")
+        #st.markdown("You can drag the image to display the slice you want.")
         with st.spinner('Rendering...'):
             data_df.reset_index(inplace=True)
             data_df.columns = [['Anatomical Name','Phenotype']]
             source_img = map_phenotype_to_nifti(data_df, mouse_atlas)
             
-            #buf = BytesIO()
-            #display = plotting.plot_stat_map(
-            #    source_img, bg_img=mouse_template, display_mode='y',
-            #    cut_coords=range(-4, 3, 1), cmap='coolwarm',
-            #    draw_cross=False, annotate=True)
-            #plt.savefig(buf, format='png', bbox_inches='tight')
-            #plt.close()
-            #buf.seek(0)
+            buf = BytesIO()
+            display = plotting.plot_stat_map(
+                source_img, bg_img=mouse_template, display_mode='y',
+                cut_coords=range(-4, 3, 1), cmap='coolwarm',
+                draw_cross=False, annotate=True)
+            plt.savefig(buf, format='png', bbox_inches='tight')
+            plt.close()
+            buf.seek(0)
 
-            padded_source_img = pad_nifti_image(source_img, pad_width=30)
-            padded_bg_img = pad_nifti_image(mouse_template, pad_width=30)
+            #padded_source_img = pad_nifti_image(source_img, pad_width=30)
+            #padded_bg_img = pad_nifti_image(mouse_template, pad_width=30)
             #downsample image to accelerate rendering
-            padded_source_img = downsample_img_by_factor(padded_source_img, factor=3)
-            padded_bg_img = downsample_img_by_factor(padded_bg_img, factor=3)
-            html_view = plotting.view_img(
-                padded_source_img, bg_img=padded_bg_img,
-                cmap='coolwarm', draw_cross=False, annotate=True, symmetric_cmap=True)
-        st.components.v1.html(html_view._repr_html_(),height=260,width=800)
-        #st.image(buf, caption="Phenotype in Mouse Space",  use_container_width = True)
+            #3padded_source_img = downsample_img_by_factor(padded_source_img, factor=3)
+            #padded_bg_img = downsample_img_by_factor(padded_bg_img, factor=3)
+            #html_view = plotting.view_img(
+            #    padded_source_img, bg_img=padded_bg_img,
+            #    cmap='coolwarm', draw_cross=False, annotate=True, symmetric_cmap=True)
+        #st.components.v1.html(html_view._repr_html_(),height=260,width=800)
+            
+        st.image(buf, caption="Phenotype in Mouse Space",  use_container_width = True)
         #get_nii_download_button(source_img, "Source_Data.nii.gz")
 
         st.markdown("### Visualization of Output Data")
@@ -546,33 +547,33 @@ if mapping_done_flag:
             result_df.columns = [['Anatomical Name','Phenotype']]
             target_img = map_phenotype_to_nifti(result_df, human_atlas)
             
-            #buf2 = BytesIO()
-            #display2 = plotting.plot_stat_map(target_img,cmap='coolwarm',cut_coords=(-20,-10,10))
-            #plt.savefig(buf2, format='png', bbox_inches='tight')
-            #plt.close()
-            #buf2.seek(0)"""
-            html_view = plotting.view_img(
-                target_img,cmap='coolwarm',draw_cross=False, annotate=True,symmetric_cmap=True)
-        st.components.v1.html(html_view._repr_html_(),height=260,width=800)
-        #st.image(buf2, caption="Phenotype in Human Space",  use_container_width = True)
+            buf2 = BytesIO()
+            display2 = plotting.plot_stat_map(target_img,cmap='coolwarm',cut_coords=(-20,-10,10),black_bg=True)
+            plt.savefig(buf2, format='png', bbox_inches='tight')
+            plt.close()
+            buf2.seek(0)
+            #html_view = plotting.view_img(
+            #    target_img,cmap='coolwarm',draw_cross=False, annotate=True,symmetric_cmap=True)
+        #st.components.v1.html(html_view._repr_html_(),height=260,width=800)
+        st.image(buf2, caption="Phenotype in Human Space",  use_container_width = True)
         #get_nii_download_button(target_img, "Target_Data.nii.gz")
         plot_flag = True
     else:
         st.markdown("### Visualization of Input Data")
-        st.markdown("You can drag the image to display the slice you want.")
+        #st.markdown("You can drag the image to display the slice you want.")
         with st.spinner('Rendering...'):
             data_df.reset_index(inplace=True)
             data_df.columns = [['Anatomical Name','Phenotype']]
             source_img = map_phenotype_to_nifti(data_df, human_atlas)
-            #buf2 = BytesIO()
-            #display2 = plotting.plot_stat_map(source_img,cmap='coolwarm',cut_coords=(-20,-10,10))
-            #plt.savefig(buf2, format='png', bbox_inches='tight')
-            #plt.close()
-            #buf2.seek(0)
-            html_view = plotting.view_img(
-                source_img,cmap='coolwarm',draw_cross=False, annotate=True,symmetric_cmap=True)
-        st.components.v1.html(html_view._repr_html_(),height=260,width=800)
-        #st.image(buf2, caption="Phenotype in Human Space",  use_container_width = True)
+            buf2 = BytesIO()
+            display2 = plotting.plot_stat_map(source_img,cmap='coolwarm',cut_coords=(-20,-10,10),black_bg=True)
+            plt.savefig(buf2, format='png', bbox_inches='tight')
+            plt.close()
+            buf2.seek(0)
+            #html_view = plotting.view_img(
+            #    source_img,cmap='coolwarm',draw_cross=False, annotate=True,symmetric_cmap=True)
+        #st.components.v1.html(html_view._repr_html_(),height=260,width=800)
+        st.image(buf2, caption="Phenotype in Human Space",  use_container_width = True)
         #get_nii_download_button(source_img, "Source_Data.nii.gz")
 
         st.markdown("### Visualization of Output Data")
@@ -582,27 +583,24 @@ if mapping_done_flag:
             result_df.reset_index(inplace=True)
             result_df.columns = [['Anatomical Name','Phenotype']]
             target_img = map_phenotype_to_nifti(result_df, mouse_atlas)
-            print('!!!!! maped to nii done')
-            #buf = BytesIO()
-            #display = plotting.plot_stat_map(
-            #    target_img, bg_img=mouse_template, display_mode='y',
-            #    cut_coords=range(-4, 3, 1), cmap='coolwarm',
-            #    draw_cross=False, annotate=True)
-            #plt.savefig(buf, format='png', bbox_inches='tight')
-            #plt.close()
-            #buf.seek(0)
-            padded_target_img = pad_nifti_image(target_img, pad_width=30)
-            padded_bg_img = pad_nifti_image(mouse_template, pad_width=30)
-            print('!!!!!padding done')
-            padded_source_img = downsample_img_by_factor(padded_target_img, factor=3)
-            padded_bg_img = downsample_img_by_factor(padded_bg_img, factor=3)
-            print('!!!!!downsample done')
+            buf = BytesIO()
+            display = plotting.plot_stat_map(
+                target_img, bg_img=mouse_template, display_mode='y',
+                cut_coords=range(-4, 3, 1), cmap='coolwarm',
+                draw_cross=False, annotate=True)
+            plt.savefig(buf, format='png', bbox_inches='tight')
+            plt.close()
+            buf.seek(0)
+            #padded_target_img = pad_nifti_image(target_img, pad_width=30)
+            #padded_bg_img = pad_nifti_image(mouse_template, pad_width=30)
+            #padded_source_img = downsample_img_by_factor(padded_target_img, factor=3)
+            #padded_bg_img = downsample_img_by_factor(padded_bg_img, factor=3)
 
-            html_view = plotting.view_img(
-                padded_target_img, bg_img=padded_bg_img,
-                cmap='coolwarm', draw_cross=False, annotate=True, symmetric_cmap=True)
-        st.components.v1.html(html_view._repr_html_(),height=260,width=800)
-        #st.image(buf, caption="Phenotype in Mouse Space",  use_container_width = True)
+            #html_view = plotting.view_img(
+            #    padded_target_img, bg_img=padded_bg_img,
+            #    cmap='coolwarm', draw_cross=False, annotate=True, symmetric_cmap=True)
+        #st.components.v1.html(html_view._repr_html_(),height=260,width=800)
+        st.image(buf, caption="Phenotype in Mouse Space",  use_container_width = True)
         #get_nii_download_button(target_img, "Target_Data.nii.gz")
         
         plot_flag = True
