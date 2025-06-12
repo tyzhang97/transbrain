@@ -390,7 +390,7 @@ import zipfile
 import tempfile
 from nilearn.image import resample_img
 
-def map_phenotype_to_nifti_raw(mouse_phenotype_df, mouse_atlas_dict):
+def map_phenotype_to_nifti(mouse_phenotype_df, mouse_atlas_dict):
     """
     Maps ROI-level phenotype values to a mouse atlas label image.
 
@@ -422,7 +422,7 @@ def map_phenotype_to_nifti_raw(mouse_phenotype_df, mouse_atlas_dict):
     return phenotype_img
 
 
-def map_phenotype_to_nifti(mouse_phenotype_df, mouse_atlas_dict):
+def map_phenotype_to_nifti_vec(mouse_phenotype_df, mouse_atlas_dict):
     """
     Fast version: fully vectorized.
     """
