@@ -576,6 +576,7 @@ if mapping_done_flag:
         #get_nii_download_button(source_img, "Source_Data.nii.gz")
 
         st.markdown("### Visualization of Output Data")
+
         '''
         with st.spinner('Rendering...'):
             result_df.reset_index(inplace=True)
@@ -611,9 +612,9 @@ if plot_flag==True:
             nib.save(source_img, tmp1.name)
             zip_file.write(tmp1.name, arcname="Source_Data.nii.gz")
 
-        with tempfile.NamedTemporaryFile(suffix=".nii.gz", delete=False) as tmp2:
-            nib.save(target_img, tmp2.name)
-            zip_file.write(tmp2.name, arcname="Target_Data.nii.gz")
+        #with tempfile.NamedTemporaryFile(suffix=".nii.gz", delete=False) as tmp2:
+        #    nib.save(target_img, tmp2.name)
+        #    zip_file.write(tmp2.name, arcname="Target_Data.nii.gz")
 
         zip_file.writestr(output_filename, csv_bytes)
 
