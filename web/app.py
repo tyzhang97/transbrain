@@ -576,6 +576,7 @@ if mapping_done_flag:
         #get_nii_download_button(source_img, "Source_Data.nii.gz")
 
         st.markdown("### Visualization of Output Data")
+        '''
         with st.spinner('Rendering...'):
             result_df.reset_index(inplace=True)
             result_df.columns = [['Anatomical Name','Phenotype']]
@@ -599,6 +600,7 @@ if mapping_done_flag:
         st.components.v1.html(html_view._repr_html_(),height=260,width=800)
         #st.image(buf, caption="Phenotype in Mouse Space",  use_container_width = True)
         #get_nii_download_button(target_img, "Target_Data.nii.gz")
+        '''
         plot_flag = True
 
 
