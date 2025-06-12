@@ -89,8 +89,8 @@ python test_transbrain.py
 ## Getting Started
 ### Usage
 - After installation, you can refer to the [**basic usage notebook**](./tests/basic_usage.ipynb) in the root directory of TransBrain to explore usage examples and other functions.
-- You can see detailed documentation of TransBrain [here](http://192.168.193.179:10088/)
-- We also provide a [online mapping website](http://192.168.193.179:10087/), which enables users to directly upload your data for online mapping and visualization.
+- You can see detailed documentation of TransBrain [here](https://transbrain.readthedocs.io/en/latest/)
+- We also provide a [online mapping website](https://transbrain.streamlit.app/), which enables users to directly upload your data for online mapping and visualization.
 
 
 ```python
