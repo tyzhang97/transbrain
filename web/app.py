@@ -186,7 +186,6 @@ elif data_type == 'Image':
         file_name="Example_data.zip",
         mime="application/zip"
     )
-    del zip_buffer
 
 import io
 import tempfile
