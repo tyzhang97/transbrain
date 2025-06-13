@@ -15,8 +15,6 @@ import os
 
 sys.path.insert(0, os.path.abspath('../../'))
 #sys.path.insert(0, os.path.abspath('../../pipeline'))
-#sys.path.insert(0, os.path.abspath('../../tutorials'))
-#sys.path.insert(0, os.path.abspath('../../tests'))
 #sys.path.insert(0, os.path.abspath('../../pipeline/code/dintegrate'))
 #sys.path.insert(0, os.path.abspath('../../pipeline/code/graph_walk'))
 #sys.path.insert(0, os.path.abspath('../../pipeline/code/dnn'))
@@ -77,7 +75,7 @@ nbsphinx_execute = 'never'
 autodoc_member_order = 'bysource'  
 autodoc_default_flags = ['members']  
 
-html_logo = "_static/figures/logo_final.png"
+html_logo = "_static/figures/logo_new.png"
 pygments_style = 'sphinx'
 
 from pathlib import Path
