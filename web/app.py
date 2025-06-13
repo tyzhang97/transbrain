@@ -162,9 +162,9 @@ elif data_type == 'Image':
 
     if direction == 'mouse to human':
         DATA_DIR = "./transbrain/exampledata/mouse"
-        filename = "mouse_example_phenotype_data_0.125mm.nii.gz"
+        filename = "mouse_example_phenotype_data_0.2mm.nii.gz"
         data_path = os.path.join(DATA_DIR, filename)
-        template_path = "./transbrain/atlas/p56_atlas_0.125mm.nii.gz"
+        template_path = "./transbrain/atlas/p56_atlas_0.2mm.nii.gz"
 
     else:
         DATA_DIR = "./transbrain/exampledata/human"
@@ -186,6 +186,7 @@ elif data_type == 'Image':
         file_name="Example_data.zip",
         mime="application/zip"
     )
+
 
 import io
 import tempfile
@@ -556,10 +557,10 @@ if mapping_done_flag:
     mouse_atlas = tb.atlas.fetch_mouse_atlas(region_type=region_type)
     mouse_atlas_info = mouse_atlas['info_table']
     del mouse_atlas
-    mouse_atlas_image = nib.load('./transbrain/atlas/mouse_atlas_0.125mm.nii.gz')
+    mouse_atlas_image = nib.load('./transbrain/atlas/mouse_atlas_0.2mm.nii.gz')
 
     human_atlas = tb.atlas.fetch_human_atlas(atlas_type=atlas_flag,region_type = region_type)
-    mouse_template = image.load_img('./transbrain/atlas/p56_atlas_0.125mm.nii.gz')
+    mouse_template = image.load_img('./transbrain/atlas/p56_atlas_0.2mm.nii.gz')
     human_template = image.load_img('./transbrain/atlas/mni152nlin6_res-2x2x2_t1w.nii.gz')
 
     if direction == 'mouse to human':
