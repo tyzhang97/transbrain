@@ -75,7 +75,7 @@ nbsphinx_execute = 'never'
 autodoc_member_order = 'bysource'  
 autodoc_default_flags = ['members']  
 
-html_logo = "_static/figures/logo_new.png"
+html_logo = "_static/figures/logo_final.png"
 pygments_style = 'sphinx'
 
 from pathlib import Path
